@@ -1,0 +1,11 @@
+include COPYING.txt
+include CONTRIBUTING.md
+include README.rst
+
+graft doc
+graft microLearner
+
+prune doc/build
+
+global-exclude *.pyc
+global-exclude *.pyo
