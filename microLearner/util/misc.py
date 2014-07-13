@@ -47,6 +47,6 @@ class MultiParamType(click.ParamType):
             else:
                 return [self.func(i) for i in values]
         except ValueError:
-            self.fail('%s is not a valid method setting' % value, param, ctx)
+            self.fail('%s is not a valid' % value, param, ctx)
 
 multi_int = MultiParamType(func=int)

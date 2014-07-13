@@ -1,9 +1,9 @@
 Contributing to microLearner
 ======================
 
-microLearner is an open source software package, and we welcome community contributions. You can find the source code and test code for microLearner under public revision control in the microLearner git repository. We very much welcome contributions.
+microLearner is an open source software package, and we welcome community contributions. You can find the source code and test code for microLearner under public revision control in the microLearner git repository.
 
-This document covers what you should do to get started with contributing to microLearner. You should read this whole document before considering submitting code to microLearner. This will save time for both you and the microLearner developers.
+This document will help you get started with contributing to microLearner. You should read this whole document before considering submitting code to microLearner. This will save time for both you and the microLearner developers.
 
 Type of Submissions
 -------------------
@@ -19,17 +19,17 @@ When considering submitting a new feature to microLearner, you should begin by p
  You should include the following information in your bug report:
 
  1. The exact command or function call that you issue to create the bug.
- 2. A link to all necessary input files for reproducing the bug. These files should only be as large as necessary to create the bug. For example, if you have an input file with 10,000 fasta-formatted sequences but the error only arises due to one of the sequences, create a new fasta file with only that sequence, run the command that was giving you problems, and verify that you still get an error. Then post that command and link to the trimmed fasta file. This is *extremely* useful to other developer, and it is likely that if you don't provide this information you'll get a response asking for it. Often this process helps you to better understand the bug as well.
+ 2. A link to all necessary input files for reproducing the bug. These files should only be as large as necessary to create the bug. For example, if you have an input file with 10,000 data points but the error only arises due to one of them, create a new input file with a few data points including that one, run the command that was giving you problems, and verify that you still get an error. Then post that command and link to the trimmed input file. This is *extremely* useful to other developer, and it is likely that if you don't provide this information you'll get a response asking for it. Often this process helps you to better understand the bug as well.
 
 * For documentation additions, you should first post an issue describing what you propose to add, where you'd like to add it in the documentation, and a description of why you think it's an important addition. For documentation improvements and fixes, you should post an issue describing what is currently wrong or missing, and how you propose to address it. For more information about building and contributing to microLearner's documentation, see [this guide](doc/README.md).
 
 When you post your issue, the microLearner developers will respond to let you know if we agree with the addition or change. It's very important that you go through this step to avoid wasting time working on a feature that we are not interested in including in microLearner.
 
 
-Getting started: "quick fixes"
+Getting started: "help wanted"
 ------------------------------
 
-Some of our issues are labeled as ``quick fix``. Working on [these issues](https://github.com/RNAer/microLearner/issues?direction=desc&labels=quick+fix&milestone=&page=1&sort=updated&state=open) is a good way to get started with contributing to microLearner. These are usually small bugs or documentation errors that will only require one or a few lines of code to fix. Getting started by working on one of these issues will allow you to familiarize yourself with our development process before committing to a large amount of work (e.g., adding a new feature to microLearner). If you're interested in working on one of these issues, you should comment on the issue requesting that it be assigned to you.
+Some of our issues are labeled as ``help wanted``. Working on [these issues](https://github.com/RNAer/microLearner/issues?direction=desc&labels=quick+fix%2Chelp+wanted&page=1&sort=updated&state=open) is a good way to get started with contributing to microLearner. These are usually small bugs or documentation errors that will only require one or a few lines of code to fix. Getting started by working on one of these issues will allow you to familiarize yourself with our development process before committing to a large amount of work (e.g., adding a new feature to microLearner). If you're interested in working on one of these issues, you should comment on the issue requesting that it be assigned to you.
 
 
 Code Review
@@ -44,7 +44,7 @@ When you submit code to microLearner, it will be reviewed by one or more microLe
 
 This process is designed to ensure the quality of microLearner, and can be a very useful experience for new developers.
 
-Particularly for big changes, if you'd like feedback on your code in the form of a code review as you work, you should request help in the issue that you created and one of the microLearner developers will work with you to perform regular code reviews. This can greatly reduce development time (and frustration) so we highly recommend that new developers take advantage of this rather than submitting a pull request with a massive amount of code in one chunk. That can lead to frustration when the developer thinks they are done, but the reviewer requests large amounts of changes, and it is also very hard to review.
+Particularly for big changes, if you'd like feedback on your code in the form of a code review as you work, you should request help in the issue that you created and the microLearner developers will work with you to perform regular code reviews. This can greatly reduce development time (and frustration) so we highly recommend that new developers take advantage of this rather than submitting a pull request with a massive amount of code in one chunk. That can lead to frustration when the developer thinks they are done, but the reviewer requests large amounts of changes, and it is also very hard to review.
 
 
 Submitting code to microLearner
@@ -91,11 +91,12 @@ microLearner is hosted on [GitHub](http://www.github.com), and we use GitHub's [
 
 12. Edit mode.
 
-    Packages normally install under site-packages, but when you’re making changes, it makes more sense to run the package straight from the your local directory of the package. “Editable” installs create a .pth file in site-packages that extends Python’s import path to find the package:
+    Packages normally install under site-packages, but when you’re making changes, it makes more sense to run the package straight from the your local directory of the package. "Editable" installation creates a .pth file in site-packages that extends Python’s import path to find the package:
+    ```
+    pip install --editable path/to/the/package
+    ```
 
-    ``pip install --editable path/to/the/package``
-
-    Once it is installed as edit mode, you can run the commands of the package with the effect of your changes whenever you want.
+    Once it is installed as edit mode, you can run the commands of the package. This is *really* helpful to see the effect your changes in real time.
 
 Coding Guidelines
 -----------------
@@ -114,13 +115,13 @@ Tests can be executed using [nose](https://nose.readthedocs.org/en/latest/) by r
 >>> import microLearner
 >>> microLearner.test()
 # full test suite is executed
->>> microLearner.parse.test()
-# tests for the parse module are executed
+>>> microLearner.until.test()
+# tests for the util module are executed
 ```
 
 Note that this is possible because the lines below are added at the end of each `__init__.py` file in the package, so if you add a new module, be sure to include these lines in its `__init__.py`:
 
-```python
+``` python
 from numpy.testing import Tester
 test = Tester().test
 ```
