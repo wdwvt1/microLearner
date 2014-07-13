@@ -7,15 +7,13 @@
 #
 # The full license is in the file COPYING.txt, distributed with this software.
 # ----------------------------------------------------------------------------
-
-from __future__ import absolute_import, division, print_function
-
-from unittest import TestCase, main
+from __future__ import print_function
+from pandas import DataFrame
 
 
-class FeaturesTest(TestCase):
-    pass
-
-
-if __name__ == "__main__":
-    main()
+class Instances(DataFrame):
+    '''
+    '''
+    def __init__(self, features, outcome):
+        self.features = features
+        self.outcome = outcome

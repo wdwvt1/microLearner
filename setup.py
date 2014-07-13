@@ -95,7 +95,7 @@ setup(
                       'matplotlib >= 1.1.0',
                       'scikit-learn',
                       'click',
-                      'biom',
+                      # 'biom',
                       'pandas',
                       'future'],
     extras_require={'test': ["nose >= 0.10.1", "pep8", "flake8"],
@@ -116,7 +116,7 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points={
         'console_scripts': [
-            'microLearner=microLearner.run:test',
+            'microLearner=microLearner.cmd:microLearner',
         ],
     },
 
